@@ -9,7 +9,7 @@
 import Foundation
 
 // This class object purpose is to hold info for Movies list
-class MediaBrief {
+class MovieBrief {
     
     var id: Int
     var title: String

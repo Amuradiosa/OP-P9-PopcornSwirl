@@ -19,6 +19,9 @@
 		150BB62823DB3F150036535E /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150BB62723DB3F150036535E /* DataManager.swift */; };
 		150BB62A23DB3F340036535E /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150BB62923DB3F340036535E /* MovieService.swift */; };
 		150BB62C23DB42110036535E /* MovieBrief.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150BB62B23DB42110036535E /* MovieBrief.swift */; };
+		150BB62E23DDB34E0036535E /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150BB62D23DDB34E0036535E /* Movie.swift */; };
+		150BB63323E1A1DA0036535E /* ListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150BB63223E1A1DA0036535E /* ListCollectionViewCell.swift */; };
+		150BB63523E2DA0F0036535E /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150BB63423E2DA0F0036535E /* MovieDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,9 @@
 		150BB62723DB3F150036535E /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		150BB62923DB3F340036535E /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
 		150BB62B23DB42110036535E /* MovieBrief.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieBrief.swift; sourceTree = "<group>"; };
+		150BB62D23DDB34E0036535E /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		150BB63223E1A1DA0036535E /* ListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewCell.swift; sourceTree = "<group>"; };
+		150BB63423E2DA0F0036535E /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +74,7 @@
 		150BB60523DB34220036535E /* Popcorn Swirl */ = {
 			isa = PBXGroup;
 			children = (
+				150BB63123E1A1810036535E /* Components */,
 				150BB61F23DB34B10036535E /* Model */,
 				150BB61E23DB34A50036535E /* View */,
 				150BB61D23DB349B0036535E /* Controller */,
@@ -84,6 +91,7 @@
 				150BB60A23DB34220036535E /* MoviesListViewController.swift */,
 				150BB62223DB37530036535E /* BookmarkedMoviesViewController.swift */,
 				150BB62423DB39140036535E /* WatchedMoviesViewController.swift */,
+				150BB63423E2DA0F0036535E /* MovieDetailViewController.swift */,
 				150BB62623DB3E7E0036535E /* Helper Controller */,
 			);
 			path = Controller;
@@ -102,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				150BB62B23DB42110036535E /* MovieBrief.swift */,
+				150BB62D23DDB34E0036535E /* Movie.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -123,6 +132,14 @@
 				150BB62923DB3F340036535E /* MovieService.swift */,
 			);
 			name = "Helper Controller";
+			sourceTree = "<group>";
+		};
+		150BB63123E1A1810036535E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				150BB63223E1A1DA0036535E /* ListCollectionViewCell.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,10 +213,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				150BB63323E1A1DA0036535E /* ListCollectionViewCell.swift in Sources */,
 				150BB60B23DB34220036535E /* MoviesListViewController.swift in Sources */,
 				150BB60723DB34220036535E /* AppDelegate.swift in Sources */,
 				150BB60923DB34220036535E /* SceneDelegate.swift in Sources */,
+				150BB63523E2DA0F0036535E /* MovieDetailViewController.swift in Sources */,
 				150BB62823DB3F150036535E /* DataManager.swift in Sources */,
+				150BB62E23DDB34E0036535E /* Movie.swift in Sources */,
 				150BB61123DB34220036535E /* Popcorn_Swirl.xcdatamodeld in Sources */,
 				150BB62C23DB42110036535E /* MovieBrief.swift in Sources */,
 				150BB62523DB39140036535E /* WatchedMoviesViewController.swift in Sources */,

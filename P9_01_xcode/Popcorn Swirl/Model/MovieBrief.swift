@@ -11,20 +11,19 @@ import Foundation
 // This class object purpose is to hold info for Movies list
 class MovieBrief {
     
-    var id: Int
+    // an iTunes id of a movie to help us looking up more details of that movie in the iTunes store
+    var id: Int64
     var title: String
-    var category: String
-    var releaseYear: Int
-    var artWorkURL: String
+    var genre: String
+    var artworkURL: String
+    // a property to store the actual image data
+    var artworkData: Data?
     
-    var artWorkData: Data?
-    
-    init(id: Int, title: String, category: String, releaseYear: Int, artWorkURL: String) {
+    init(id: Int64, title: String, category: String, artWorkURL: String) {
         self.id = id
         self.title = title
-        self.category = category
-        self.releaseYear = releaseYear
-        self.artWorkURL = artWorkURL
+        self.genre = category
+        self.artworkURL = artWorkURL
     }
     
 }

@@ -21,10 +21,10 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="wia-TL-1V5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="5TW-wE-kwP"/>
-                            <constraint firstItem="wia-TL-1V5" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Qmn-i2-pgP"/>
-                            <constraint firstItem="wia-TL-1V5" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="oCc-iE-8X9"/>
-                            <constraint firstItem="wia-TL-1V5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zdL-bZ-L8h"/>
+                            <constraint firstItem="wia-TL-1V5" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Ste-f6-AQs"/>
+                            <constraint firstItem="wia-TL-1V5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="WFj-Kq-Nvg"/>
+                            <constraint firstItem="wia-TL-1V5" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="kbV-0m-euE"/>
+                            <constraint firstItem="wia-TL-1V5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="sjD-YZ-qor"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

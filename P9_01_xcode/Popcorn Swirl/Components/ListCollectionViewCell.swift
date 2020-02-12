@@ -1,8 +1,8 @@
 //
-//  ListCollectionViewCell.swift
+//  ListCollectionViewCell2.swift
 //  Popcorn Swirl
 //
-//  Created by Ahmad Murad on 29/01/2020.
+//  Created by Ahmad Murad on 08/02/2020.
 //  Copyright © 2020 Ahmad Murad. All rights reserved.
 //
 
@@ -19,8 +19,20 @@ class ListCollectionViewCell: UICollectionViewCell {
         categoryLabel.text = movieBrief.genre
     }
     
+    func populateWith(savedMovies: SavedMovies) {
+        titleLabel.text = savedMovies.title
+        categoryLabel.text = savedMovies.genre
+    }
+    
     func setImage(image: UIImage?) {
         artWorkImageView.image = image
     }
     
+    
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
 }

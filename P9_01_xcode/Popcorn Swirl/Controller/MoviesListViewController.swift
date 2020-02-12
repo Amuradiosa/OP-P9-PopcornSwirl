@@ -13,6 +13,8 @@ class MoviesListViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewFlowLayout: UICollectionViewFlowLayout!
     
+    private var selected: IndexPath?
+    
     var dataSource: [MovieBrief] {
         return DataManager.shared.movieList
     }
@@ -48,22 +50,33 @@ class MoviesListViewController: UIViewController {
         loadData()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        loadData()
+    }
+    
     func configure() {
+        registerCell()
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionViewFlowLayout.scrollDirection = .vertical
         navigationItem.title = "Movies"
     }
     
+    private func registerCell() {
+        let cell = UINib(nibName: "ListCollectionViewCell", bundle: nil)
+        collectionView.register(cell, forCellWithReuseIdentifier: "movieListCell")
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showMovieDetails",
-            let cell = sender as? ListCollectionViewCell,
-            let indexPath = collectionView.indexPath(for: cell),
             let movieDetailViewController = segue.destination as? MovieDetailViewController {
-            let movieBrief = dataSource[indexPath.item]
+            let movieBrief = dataSource[selected!.item]
             movieDetailViewController.movieId = movieBrief.id
         }
     }
+    
+    
 
 }
 
@@ -98,14 +111,17 @@ extension MoviesListViewController: UICollectionViewDataSource, UICollectionView
         }
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selected = indexPath
+        self.performSegue(withIdentifier: "showMovieDetails", sender: self)
+    }
 }
 
 extension MoviesListViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let w = collectionView.frame.size.width
-        print(w)
-        print(CGSize(width: (w - 20)/2, height: 290))
         return CGSize(width: (w - 20)/2, height: 290)
     }
     

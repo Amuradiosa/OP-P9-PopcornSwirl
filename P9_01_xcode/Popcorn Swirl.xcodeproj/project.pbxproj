@@ -20,8 +20,12 @@
 		150BB62A23DB3F340036535E /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150BB62923DB3F340036535E /* MovieService.swift */; };
 		150BB62C23DB42110036535E /* MovieBrief.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150BB62B23DB42110036535E /* MovieBrief.swift */; };
 		150BB62E23DDB34E0036535E /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150BB62D23DDB34E0036535E /* Movie.swift */; };
-		150BB63323E1A1DA0036535E /* ListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150BB63223E1A1DA0036535E /* ListCollectionViewCell.swift */; };
 		150BB63523E2DA0F0036535E /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150BB63423E2DA0F0036535E /* MovieDetailViewController.swift */; };
+		151CE9DF23EF1C6F00D7E23C /* SavedMovies+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151CE9DD23EF1C6F00D7E23C /* SavedMovies+CoreDataClass.swift */; };
+		151CE9E023EF1C6F00D7E23C /* SavedMovies+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151CE9DE23EF1C6F00D7E23C /* SavedMovies+CoreDataProperties.swift */; };
+		151CE9E323EF359E00D7E23C /* ListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151CE9E123EF359E00D7E23C /* ListCollectionViewCell.swift */; };
+		151CE9E423EF359E00D7E23C /* ListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 151CE9E223EF359E00D7E23C /* ListCollectionViewCell.xib */; };
+		15A8096723E7201C00F7B19D /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A8096623E7201C00F7B19D /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,8 +44,12 @@
 		150BB62923DB3F340036535E /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
 		150BB62B23DB42110036535E /* MovieBrief.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieBrief.swift; sourceTree = "<group>"; };
 		150BB62D23DDB34E0036535E /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
-		150BB63223E1A1DA0036535E /* ListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewCell.swift; sourceTree = "<group>"; };
 		150BB63423E2DA0F0036535E /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
+		151CE9DD23EF1C6F00D7E23C /* SavedMovies+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SavedMovies+CoreDataClass.swift"; sourceTree = "<group>"; };
+		151CE9DE23EF1C6F00D7E23C /* SavedMovies+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SavedMovies+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		151CE9E123EF359E00D7E23C /* ListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewCell.swift; sourceTree = "<group>"; };
+		151CE9E223EF359E00D7E23C /* ListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListCollectionViewCell.xib; sourceTree = "<group>"; };
+		15A8096623E7201C00F7B19D /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,13 +82,13 @@
 		150BB60523DB34220036535E /* Popcorn Swirl */ = {
 			isa = PBXGroup;
 			children = (
+				15A8096123E707BC00F7B19D /* CoreData */,
 				150BB63123E1A1810036535E /* Components */,
 				150BB61F23DB34B10036535E /* Model */,
 				150BB61E23DB34A50036535E /* View */,
 				150BB61D23DB349B0036535E /* Controller */,
 				150BB62023DB34EB0036535E /* Supporting files */,
 				150BB61723DB34240036535E /* Info.plist */,
-				150BB60F23DB34220036535E /* Popcorn_Swirl.xcdatamodeld */,
 			);
 			path = "Popcorn Swirl";
 			sourceTree = "<group>";
@@ -137,9 +145,21 @@
 		150BB63123E1A1810036535E /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				150BB63223E1A1DA0036535E /* ListCollectionViewCell.swift */,
+				151CE9E123EF359E00D7E23C /* ListCollectionViewCell.swift */,
+				151CE9E223EF359E00D7E23C /* ListCollectionViewCell.xib */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		15A8096123E707BC00F7B19D /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				151CE9DD23EF1C6F00D7E23C /* SavedMovies+CoreDataClass.swift */,
+				151CE9DE23EF1C6F00D7E23C /* SavedMovies+CoreDataProperties.swift */,
+				15A8096623E7201C00F7B19D /* CoreDataManager.swift */,
+				150BB60F23DB34220036535E /* Popcorn_Swirl.xcdatamodeld */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				150BB61623DB34240036535E /* LaunchScreen.storyboard in Resources */,
+				151CE9E423EF359E00D7E23C /* ListCollectionViewCell.xib in Resources */,
 				150BB61323DB34240036535E /* Assets.xcassets in Resources */,
 				150BB60E23DB34220036535E /* Main.storyboard in Resources */,
 			);
@@ -213,16 +234,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				150BB63323E1A1DA0036535E /* ListCollectionViewCell.swift in Sources */,
+				151CE9DF23EF1C6F00D7E23C /* SavedMovies+CoreDataClass.swift in Sources */,
 				150BB60B23DB34220036535E /* MoviesListViewController.swift in Sources */,
+				15A8096723E7201C00F7B19D /* CoreDataManager.swift in Sources */,
 				150BB60723DB34220036535E /* AppDelegate.swift in Sources */,
 				150BB60923DB34220036535E /* SceneDelegate.swift in Sources */,
 				150BB63523E2DA0F0036535E /* MovieDetailViewController.swift in Sources */,
+				151CE9E023EF1C6F00D7E23C /* SavedMovies+CoreDataProperties.swift in Sources */,
 				150BB62823DB3F150036535E /* DataManager.swift in Sources */,
 				150BB62E23DDB34E0036535E /* Movie.swift in Sources */,
 				150BB61123DB34220036535E /* Popcorn_Swirl.xcdatamodeld in Sources */,
 				150BB62C23DB42110036535E /* MovieBrief.swift in Sources */,
 				150BB62523DB39140036535E /* WatchedMoviesViewController.swift in Sources */,
+				151CE9E323EF359E00D7E23C /* ListCollectionViewCell.swift in Sources */,
 				150BB62A23DB3F340036535E /* MovieService.swift in Sources */,
 				150BB62323DB37530036535E /* BookmarkedMoviesViewController.swift in Sources */,
 			);

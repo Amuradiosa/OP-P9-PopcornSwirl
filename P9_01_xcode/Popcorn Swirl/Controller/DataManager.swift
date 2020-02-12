@@ -22,11 +22,15 @@ class DataManager {
         var list = [MovieBrief]()
         
         for i in 0..<10 {
-            let movie = MovieBrief(id: 486040195, title: "Movie \(i+1) is", category: "loading...", artWorkURL: "https://is4-ssl.mzstatic.com/image/thumb/Music/v4/33/ed/8e/33ed8eb0-4768-c14a-7e21-c421b9647e09/source/100x100bb.jpg")
+            let movie = MovieBrief(id: 486040195, title: "Movie is", category: "loading...", artWorkURL: "")
             list.append(movie)
         }
        return list
     }()
+    
+//    func adFor(movie: Movie) -> ad {
+//        
+//    }
     
     
 }

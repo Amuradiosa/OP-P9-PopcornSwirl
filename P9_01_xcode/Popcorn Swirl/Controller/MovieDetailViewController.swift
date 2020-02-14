@@ -19,6 +19,8 @@ class MovieDetailViewController: UIViewController {
     var movieNote: String?
     private var movie: Movie?
     var delegate: ModalHandler?
+    // textview inside add note alert controller
+    let textView = UITextView(frame: CGRect.zero)
     // private var ad: Advertisment?
     
     @IBOutlet weak var artworkImageView: UIImageView!
@@ -55,13 +57,15 @@ class MovieDetailViewController: UIViewController {
     }
     
     @IBAction func addNoteButtonTapped(_ sender: UIButton) {
-        
+        addNoteAction()
     }
     
     @IBAction func adViewTapped(_ sender: Any) {
         // ad resource code here
     }
     
+    
+    // MARK: - Update UI
     func updateBookmarkOutlet() {
         bookmarkOutlet.isSelected = !bookmarkOutlet.isSelected
         bookmarkOutlet.tintColor = bookmarkOutlet.isSelected ? UIColor.systemPink : UIColor.darkGray
@@ -85,7 +89,8 @@ class MovieDetailViewController: UIViewController {
     func updateNoteOutlet() {
         addNoteOutlet.backgroundColor = addToWatchedOutlet.isSelected ? UIColor.systemPink : UIColor.darkGray
         if addToWatchedOutlet.isSelected == true {
-            addNoteOutlet.setTitle("Add a Note", for: .normal)
+            let addButtonTitle = doWeHaveNote().1
+            addNoteOutlet.setTitle(addButtonTitle, for: .normal)
             addNoteOutlet.titleLabel?.font = addNoteOutlet.titleLabel?.font.withSize(24)
             addNoteOutlet.isEnabled = true
         } else {
@@ -95,100 +100,11 @@ class MovieDetailViewController: UIViewController {
         }
     }
     
-    func openURL(sourceUrl: String?) {
-        if let sourceUrl = sourceUrl, let url = URL(string: sourceUrl) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        } else {
-            presentNoDataAlert(title: "Oops, Something happened..", message: "Can't take you to the source")
-        }
-    }
-    
     // to update UI when opening the movie details from any root screen
     func updateUI() {
         if let alreadySavedMovie = CoreDataManager.shared.isThisMovieAlreadySaved(movieId: movieId) {
             alreadySavedMovie.status ? updateAddToWatchOutlet() : updateBookmarkOutlet()
             
-        }
-    }
-    
-    func deleteMovie() {
-        if let alreadySavedMovie = CoreDataManager.shared.isThisMovieAlreadySaved(movieId: movieId) {
-        // delete movie
-            CoreDataManager.shared.context.delete(alreadySavedMovie)
-            CoreDataManager.shared.appDelegate.saveContext()
-        }
-    }
-    
-    // status = false means movie is bookmarked, status = true means movie is add to watched list
-    func createOrUpdateMovie(status: Bool, note: String?) {
-        if let alreadySavedMovie = CoreDataManager.shared.isThisMovieAlreadySaved(movieId: movieId) {
-            // update movie
-            alreadySavedMovie.status = status
-            if note != nil { alreadySavedMovie.note = note }
-            CoreDataManager.shared.appDelegate.saveContext()
-        } else {
-            // create movie
-            let movie = SavedMovies(entity: SavedMovies.entity(), insertInto: CoreDataManager.shared.context)
-            
-            movie.id = self.movie!.id
-            movie.title = self.movie!.title
-            movie.genre = self.movie!.genre
-            movie.artworkURL = self.movie!.artworkURL
-            movie.artworkData = self.movie?.artworkData
-            movie.status = status
-            movie.creationDate = Date()
-            if note != nil { movie.note = note }
-            CoreDataManager.shared.appDelegate.saveContext()
-        }
-    }
-    
-    /* func addNoteAlert() {
-
-            addNote(UITextView.text!)
-       }
-    */
-    
-    /* func addNote(_ text: UIText) {
-            updateCoreData()
-       }
-     */
-    
-    /* func updateCoreData() {
-            // fetching the corresponding movie object and add a note to it, or update movie object, or deleting it if unbookmarked or unwatched
-            deleteMovie()
-        }
-     */
-    
-    /* func deleteMovie() {
-     
-        }
-     */
-    
-    /* extension className: NSFetchedResultsControllerDelegate {
-            // to handle concurrency between coredata and UI
-     }
-     
-     */
-    
-    func presentNoDataAlert(title: String?, message: String?) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let dismissAction = UIAlertAction(title: "Got it", style: .cancel)
-        alertController.addAction(dismissAction)
-        present(alertController, animated: true)
-    }
-    
-    func loadData() {
-        MovieService.getMovie(id: movieId) { (success, movie) in
-            if success, let movie = movie {
-                self.movie = movie
-                //self.ad = DataManager.shared.adFor(movie: movie)
-                DispatchQueue.main.async {
-                    self.populateMovie()
-                    self.populateAd()
-                }
-            } else {
-                self.presentNoDataAlert(title: "Oops, Something happened..", message: "Couldn't load movie details")
-            }
         }
     }
     
@@ -215,10 +131,74 @@ class MovieDetailViewController: UIViewController {
         }
     }
     
+    func presentNoDataAlert(title: String?, message: String?) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let dismissAction = UIAlertAction(title: "Got it", style: .cancel)
+        alertController.addAction(dismissAction)
+        present(alertController, animated: true)
+    }
+    
+    // MARK: - CoreData Functionality
+    func deleteMovie() {
+        if let alreadySavedMovie = CoreDataManager.shared.isThisMovieAlreadySaved(movieId: movieId) {
+        // delete movie
+            CoreDataManager.shared.context.delete(alreadySavedMovie)
+            CoreDataManager.shared.appDelegate.saveContext()
+        }
+    }
+    
+    // status = false means movie is bookmarked, status == true means movie is add to watched list
+    func createOrUpdateMovie(status: Bool, note: String?) {
+        if let alreadySavedMovie = CoreDataManager.shared.isThisMovieAlreadySaved(movieId: movieId) {
+            // update movie
+            alreadySavedMovie.status = status
+            if note != nil { alreadySavedMovie.note = note }
+            CoreDataManager.shared.appDelegate.saveContext()
+        } else {
+            // create movie
+            let movie = SavedMovies(entity: SavedMovies.entity(), insertInto: CoreDataManager.shared.context)
+            
+            movie.id = self.movie!.id
+            movie.title = self.movie!.title
+            movie.genre = self.movie!.genre
+            movie.artworkURL = self.movie!.artworkURL
+            movie.artworkData = self.movie?.artworkData
+            movie.status = status
+            movie.creationDate = Date()
+            if note != nil { movie.note = note }
+            CoreDataManager.shared.appDelegate.saveContext()
+        }
+    }
+    
+    // MARK: - Networking
+    func loadData() {
+        MovieService.getMovie(id: movieId) { (success, movie) in
+            if success, let movie = movie {
+                self.movie = movie
+                //self.ad = DataManager.shared.adFor(movie: movie)
+                DispatchQueue.main.async {
+                    self.populateMovie()
+                    self.populateAd()
+                }
+            } else {
+                self.presentNoDataAlert(title: "Oops, Something happened..", message: "Couldn't load movie details")
+            }
+        }
+    }
+    
+    func openURL(sourceUrl: String?) {
+        if let sourceUrl = sourceUrl, let url = URL(string: sourceUrl) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            presentNoDataAlert(title: "Oops, Something happened..", message: "Can't take you to the source")
+        }
+    }
+    
     func populateAd() {
         
     }
 
+    // MARK: - Configuration
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
@@ -235,4 +215,92 @@ class MovieDetailViewController: UIViewController {
         super.viewDidDisappear(true)
         delegate?.modalDismissed()
     }
+}
+
+// MARK: - Add note functionality
+extension MovieDetailViewController: UITextViewDelegate {
+    
+    func doWeHaveNote() -> (String,String,String) {
+        var titles = ("","","")
+        if let alreadySavedMovie = CoreDataManager.shared.isThisMovieAlreadySaved(movieId: movieId),
+            alreadySavedMovie.note != nil {
+            titles.0 = "Your Note"
+            titles.1 = "Edit Note"
+            titles.2 = alreadySavedMovie.note!
+        } else {
+            titles.0 = "Add New Note"
+            titles.1 = "Add Note"
+            titles.2 = "Write your note here"
+        }
+        return titles
+    }
+        
+    func addNoteAction() {
+        let (alertControllerTitle, alertControllerActionTitle, textViewText) = doWeHaveNote()
+        let alert = UIAlertController(title: alertControllerTitle, message: "", preferredStyle: .alert)
+        
+        // increse the height of alert controller to accommodate UITextView
+        let height:NSLayoutConstraint = NSLayoutConstraint(item: alert.view!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 200)
+        alert.view.addConstraint(height)
+        
+        
+        let addNoteAction = UIAlertAction(title: alertControllerActionTitle, style: .default) { (action) in
+            self.createOrUpdateMovie(status: true, note: self.textView.text)
+            alert.view.removeObserver(self, forKeyPath: "bounds")
+        }
+        
+        addNoteAction.isEnabled = false
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            alert.view.removeObserver(self, forKeyPath: "bounds")
+        }
+        
+        alert.view.addObserver(self, forKeyPath: "bounds", options: NSKeyValueObservingOptions.new, context: nil)
+        NotificationCenter.default.addObserver(forName: UITextView.textDidChangeNotification, object: textView, queue: OperationQueue.main) { (notification) in
+            addNoteAction.isEnabled = self.fetchInput(textViewInput: self.textView) != nil ? true : false
+        }
+        
+        textView.backgroundColor    = UIColor.white
+        textView.textContainerInset = UIEdgeInsets.init(top: 8, left: 5, bottom: 8, right: 5)
+        textView.font               = UIFont(name: "Helvetica", size: 15)
+        textView.backgroundColor    = UIColor.white
+        textView.layer.borderColor  = UIColor.lightGray.cgColor
+        textView.layer.borderWidth  = 1.0
+        textView.textColor          = textViewText == "Write your note here" ? UIColor.lightGray : UIColor.black
+        textView.text               = textViewText
+        textView.delegate           = self
+        
+        
+        
+        alert.view.addSubview(textView)
+        alert.addAction(addNoteAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "bounds"{
+            if let rect = (change?[NSKeyValueChangeKey.newKey] as? NSValue)?.cgRectValue {
+                let margin:CGFloat = 8.0
+                textView.frame = CGRect.init(x: rect.origin.x + margin, y: rect.origin.y + margin + 40, width: rect.width - 2*margin, height: rect.height / 2)
+                textView.bounds = CGRect.init(x: rect.origin.x + margin, y: rect.origin.y + margin, width: rect.width - 2*margin, height: rect.height / 2)
+            }
+        }
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = ""
+            textView.textColor = UIColor.black
+        }
+    }
+    
+    // function for trimming all white characters because there's a possibility that user just keeps typing spaces without meaningful text.
+    func fetchInput(textViewInput: UITextView) -> String? {
+        if let caption = textViewInput.text?.trimmingCharacters(in: .whitespaces) {
+            return caption.count > 0 ? caption : nil
+        }
+        return nil
+    }
+    
 }

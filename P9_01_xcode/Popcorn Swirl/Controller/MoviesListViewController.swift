@@ -13,14 +13,28 @@ class MoviesListViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewFlowLayout: UICollectionViewFlowLayout!
     
+    @IBOutlet weak var textBox: UITextField!
+    @IBOutlet weak var dropDown: UIPickerView!
+    
+    var releaseYears: [String] {
+        var list = [String]()
+        for i in 0...30 {
+            guard let year = Calendar.current.dateComponents([.year], from: Date()).year else {
+                fatalError("Failed to obtain year from Date object")
+            }
+            list.append(String(year - i))
+        }
+        return list
+    }
+    
     private var selected: IndexPath?
     
     var dataSource: [MovieBrief] {
         return DataManager.shared.movieList
     }
     
-    func loadData() {
-        MovieService.getMovieList(term: "2020") { (success, list) in
+    func loadData(term: String) {
+        MovieService.getMovieList(term: term) { (success, list) in
             if success, let list = list {
                 DataManager.shared.movieList = list
                 DispatchQueue.main.async {
@@ -46,12 +60,7 @@ class MoviesListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-        loadData()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        loadData()
+        loadData(term: releaseYears.first!)
     }
     
     func configure() {
@@ -59,7 +68,10 @@ class MoviesListViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionViewFlowLayout.scrollDirection = .vertical
-        navigationItem.title = "Movies"
+        textBox.delegate = self
+        dropDown.delegate = self
+        dropDown.dataSource = self
+        dropDown.isHidden = true
     }
     
     private func registerCell() {
@@ -131,6 +143,35 @@ extension MoviesListViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-
+// dropdown menu for the user to pick a release year of movies, it's defaulted to the latest.
+extension MoviesListViewController: UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return releaseYears.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        self.view.endEditing(true)
+        return releaseYears[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        textBox.text = releaseYears[row]
+        dropDown.isHidden = true
+        loadData(term: releaseYears[row])
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == textBox {
+            dropDown.isHidden = false
+            textField.endEditing(true)
+        }
+    }
+    
+}
 
 

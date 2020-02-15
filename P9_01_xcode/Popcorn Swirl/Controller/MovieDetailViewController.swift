@@ -110,7 +110,7 @@ class MovieDetailViewController: UIViewController {
         
         titleLabel.text = movie.title
         genreLabel.text = movie.genre
-        // FIXME: - get the first four charachters for the release year
+        // FIXME: - get the first four charachters for the release year using NSAttributedString
         releaseYearLabel.text = movie.releaseDate
         longDescriptionTextView.text = movie.longDescription
         
@@ -238,6 +238,7 @@ extension MovieDetailViewController: UITextViewDelegate {
         
         let addNoteAction = UIAlertAction(title: alertControllerActionTitle, style: .default) { (action) in
             self.createOrUpdateMovie(status: true, note: self.textView.text)
+            self.updateNoteOutlet()
             alert.view.removeObserver(self, forKeyPath: "bounds")
         }
         

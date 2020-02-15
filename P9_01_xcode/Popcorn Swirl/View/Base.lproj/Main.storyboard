@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cc4-BA-JCd">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="RLy-r0-Ai7">
                                     <size key="itemSize" width="173" height="201"/>
@@ -40,11 +40,31 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eHE-dp-XYg">
+                                <rect key="frame" x="147" y="44" width="120" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="ZbK-qh-Exf"/>
+                                    <constraint firstAttribute="width" constant="120" id="kZQ-Mv-bAg"/>
+                                </constraints>
+                            </pickerView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Year ⬇︎" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RAQ-9M-iQ0">
+                                <rect key="frame" x="147" y="44" width="120" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="1lx-9P-eSG"/>
+                                    <constraint firstAttribute="width" constant="120" id="XbW-lf-ec9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="cc4-BA-JCd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="QoF-iC-TEU"/>
+                            <constraint firstItem="cc4-BA-JCd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="44" id="QoF-iC-TEU"/>
+                            <constraint firstItem="RAQ-9M-iQ0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="VM1-dc-1Ix"/>
                             <constraint firstItem="cc4-BA-JCd" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="aJu-yd-lUU"/>
+                            <constraint firstItem="eHE-dp-XYg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="kNk-BX-U3u"/>
+                            <constraint firstItem="eHE-dp-XYg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lnG-hx-oue"/>
+                            <constraint firstItem="RAQ-9M-iQ0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="u1e-Xo-roc"/>
                             <constraint firstItem="cc4-BA-JCd" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="xyf-WP-wMn"/>
                             <constraint firstItem="cc4-BA-JCd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="yCr-AQ-9R8"/>
                         </constraints>
@@ -56,6 +76,8 @@
                     <connections>
                         <outlet property="collectionView" destination="cc4-BA-JCd" id="vUL-7E-aab"/>
                         <outlet property="collectionViewFlowLayout" destination="RLy-r0-Ai7" id="f2h-7a-vUC"/>
+                        <outlet property="dropDown" destination="eHE-dp-XYg" id="c27-oq-7qP"/>
+                        <outlet property="textBox" destination="RAQ-9M-iQ0" id="NvX-iV-Okh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -362,6 +384,6 @@
         <image name="film.fill" catalog="system" width="64" height="46"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Rbt-1q-sht"/>
+        <segue reference="ZK0-i0-vy9"/>
     </inferredMetricsTieBreakers>
 </document>

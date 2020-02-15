@@ -7,10 +7,8 @@
 //
 
 import UIKit
-import CoreData
 
 class BookmarkedMoviesViewController: UIViewController, ModalHandler {
-    
     
     private var selected: IndexPath?
 
@@ -24,7 +22,6 @@ class BookmarkedMoviesViewController: UIViewController, ModalHandler {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-//        CoreDataManager.shared.fetchedRC.delegate = self
         CoreDataManager.shared.refreshWith(watchedMoviesList: false)
         DispatchQueue.main.async {
             self.collectionView.reloadData()
@@ -61,8 +58,6 @@ class BookmarkedMoviesViewController: UIViewController, ModalHandler {
     }
     
 }
-
-
 
 extension BookmarkedMoviesViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 
@@ -113,24 +108,6 @@ extension BookmarkedMoviesViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 30
     }
+    
 }
-
-//extension BookmarkedMoviesViewController: NSFetchedResultsControllerDelegate {
-//
-//    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-//
-////        let index = indexPath ?? (newIndexPath ?? nil)
-////        guard let cellIndex = index else {
-////            return
-////        }
-//
-//        switch type {
-//        case .delete:
-//            collectionView.deleteItems(at: [selected!])
-//        default:
-//            break
-//        }
-//    }
-//
-//}
 

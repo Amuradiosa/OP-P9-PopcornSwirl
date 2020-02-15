@@ -20,8 +20,7 @@ class MoviesListViewController: UIViewController {
     }
     
     func loadData() {
-        
-        MovieService.getMovieList(term: "new") { (success, list) in
+        MovieService.getMovieList(term: "2020") { (success, list) in
             if success, let list = list {
                 DataManager.shared.movieList = list
                 DispatchQueue.main.async {
@@ -76,8 +75,6 @@ class MoviesListViewController: UIViewController {
         }
     }
     
-    
-
 }
 
 extension MoviesListViewController: UICollectionViewDataSource, UICollectionViewDelegate {

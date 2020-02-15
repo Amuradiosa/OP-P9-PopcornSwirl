@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CoreData
+import GoogleMobileAds
 
 protocol ModalHandler {
     func modalDismissed()
@@ -21,7 +21,6 @@ class MovieDetailViewController: UIViewController {
     var delegate: ModalHandler?
     // textview inside add note alert controller
     let textView = UITextView(frame: CGRect.zero)
-    // private var ad: Advertisment?
     
     @IBOutlet weak var artworkImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -29,6 +28,7 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var releaseYearLabel: UILabel!
     @IBOutlet weak var longDescriptionTextView: UITextView!
     
+    @IBOutlet weak var bannerView: GADBannerView!
     @IBOutlet weak var bookmarkOutlet: UIButton!
     @IBOutlet weak var addToWatchedOutlet: UIButton!
     @IBOutlet weak var addNoteOutlet: UIButton!
@@ -59,11 +59,6 @@ class MovieDetailViewController: UIViewController {
     @IBAction func addNoteButtonTapped(_ sender: UIButton) {
         addNoteAction()
     }
-    
-    @IBAction func adViewTapped(_ sender: Any) {
-        // ad resource code here
-    }
-    
     
     // MARK: - Update UI
     func updateBookmarkOutlet() {
@@ -175,10 +170,8 @@ class MovieDetailViewController: UIViewController {
         MovieService.getMovie(id: movieId) { (success, movie) in
             if success, let movie = movie {
                 self.movie = movie
-                //self.ad = DataManager.shared.adFor(movie: movie)
                 DispatchQueue.main.async {
                     self.populateMovie()
-                    self.populateAd()
                 }
             } else {
                 self.presentNoDataAlert(title: "Oops, Something happened..", message: "Couldn't load movie details")
@@ -193,17 +186,16 @@ class MovieDetailViewController: UIViewController {
             presentNoDataAlert(title: "Oops, Something happened..", message: "Can't take you to the source")
         }
     }
-    
-    func populateAd() {
-        
-    }
 
     // MARK: - Configuration
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
         configure()
-//        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
     }
     
     func configure() {

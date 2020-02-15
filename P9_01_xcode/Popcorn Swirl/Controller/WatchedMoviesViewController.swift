@@ -10,8 +10,6 @@ import UIKit
 
 class WatchedMoviesViewController: UIViewController, ModalHandler {
     
-    
-    
     private var selected: IndexPath?
 
     @IBOutlet weak var collectionView: UICollectionView!

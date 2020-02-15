@@ -28,9 +28,4 @@ class DataManager {
        return list
     }()
     
-//    func adFor(movie: Movie) -> ad {
-//        
-//    }
-    
-    
 }

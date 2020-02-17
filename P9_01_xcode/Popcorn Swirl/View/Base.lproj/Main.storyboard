@@ -26,7 +26,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="f97-cN-IDu" customClass="ListCollectionViewCell" customModule="Popcorn_Swirl" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="f97-cN-IDu" customClass="ListCollectionViewCell" customModule="Popcorn_Swirl" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="173" height="201"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="wa1-sI-kHS">
@@ -102,7 +102,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="F5u-sD-VgX">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="F5u-sD-VgX">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="b3c-wr-oSc">
@@ -153,7 +153,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Z0i-Hh-chi" customClass="ListCollectionViewCell" customModule="Popcorn_Swirl" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="Z0i-Hh-chi" customClass="ListCollectionViewCell" customModule="Popcorn_Swirl" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="VwT-a8-Sht">
@@ -346,6 +346,7 @@
                         <outlet property="genreLabel" destination="Dte-Fu-Xbh" id="bwT-KP-yjI"/>
                         <outlet property="longDescriptionTextView" destination="ouN-2z-bZW" id="dB0-7c-Y1d"/>
                         <outlet property="releaseYearLabel" destination="Si6-N7-bdP" id="nu1-GN-5eT"/>
+                        <outlet property="storeButton" destination="oem-D0-Wv1" id="2xy-GX-1Eq"/>
                         <outlet property="titleLabel" destination="BkQ-TW-yh3" id="hoe-z6-1og"/>
                     </connections>
                 </viewController>
@@ -384,6 +385,6 @@
         <image name="film.fill" catalog="system" width="64" height="46"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ZK0-i0-vy9"/>
+        <segue reference="Rbt-1q-sht"/>
     </inferredMetricsTieBreakers>
 </document>

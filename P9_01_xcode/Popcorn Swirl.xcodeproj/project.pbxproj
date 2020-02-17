@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1500B44B23F97318001F2BD3 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1500B44A23F97318001F2BD3 /* RoundButton.swift */; };
 		150BB60723DB34220036535E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150BB60623DB34220036535E /* AppDelegate.swift */; };
 		150BB60923DB34220036535E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150BB60823DB34220036535E /* SceneDelegate.swift */; };
 		150BB60B23DB34220036535E /* MoviesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150BB60A23DB34220036535E /* MoviesListViewController.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1500B44A23F97318001F2BD3 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		150BB60323DB34220036535E /* Popcorn Swirl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Popcorn Swirl.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		150BB60623DB34220036535E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		150BB60823DB34220036535E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			children = (
 				150BB62B23DB42110036535E /* MovieBrief.swift */,
 				150BB62D23DDB34E0036535E /* Movie.swift */,
+				1500B44A23F97318001F2BD3 /* RoundButton.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -183,7 +186,6 @@
 				F91FFD7F1215C1821CAFD2A0 /* Pods-Popcorn Swirl.debug.xcconfig */,
 				E9B7546EB6040FEA78AA088A /* Pods-Popcorn Swirl.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -303,6 +305,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1500B44B23F97318001F2BD3 /* RoundButton.swift in Sources */,
 				151CE9DF23EF1C6F00D7E23C /* SavedMovies+CoreDataClass.swift in Sources */,
 				150BB60B23DB34220036535E /* MoviesListViewController.swift in Sources */,
 				15A8096723E7201C00F7B19D /* CoreDataManager.swift in Sources */,
@@ -464,6 +467,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K8SYKS5XRJ;
+				IBSC_WARNINGS = NO;
 				INFOPLIST_FILE = "Popcorn Swirl/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -483,6 +487,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K8SYKS5XRJ;
+				IBSC_WARNINGS = NO;
 				INFOPLIST_FILE = "Popcorn Swirl/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

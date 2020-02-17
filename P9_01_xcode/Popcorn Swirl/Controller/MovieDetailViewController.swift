@@ -32,6 +32,7 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var bookmarkOutlet: UIButton!
     @IBOutlet weak var addToWatchedOutlet: UIButton!
     @IBOutlet weak var addNoteOutlet: UIButton!
+    @IBOutlet weak var storeButton: UIButton!
     
     @IBAction func bookmarkButtonTapped(_ sender: UIButton) {
         updateBookmarkOutlet()
@@ -192,15 +193,26 @@ class MovieDetailViewController: UIViewController {
         super.viewDidLoad()
         loadData()
         configure()
-        
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-        bannerView.rootViewController = self
-        bannerView.load(GADRequest())
+        configureAdUnit()
     }
     
     func configure() {
         updateNoteOutlet()
         updateUI()
+        round(button: storeButton)
+        round(button: addNoteOutlet)
+    }
+    
+    func configureAdUnit() {
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+    }
+    
+    func round(button: UIButton) {
+        var roundButton = RoundButton()
+        roundButton.setButton(button)
+        roundButton.roundButton()
     }
 
     override func viewDidDisappear(_ animated: Bool) {

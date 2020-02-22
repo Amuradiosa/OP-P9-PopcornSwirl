@@ -20,24 +20,6 @@ class CoreDataManager {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var fetchedRC: NSFetchedResultsController<SavedMovies>!
     
-//    func getSavedMovies() -> [SavedMovies] {
-//        fetchedRC.object
-//    }
-    
-//    func refresh() {
-//            let request = SavedMovies.fetchRequest() as NSFetchRequest<SavedMovies>
-//            
-//            let sort = NSSortDescriptor(key: #keyPath(SavedMovies.creationDate), ascending: true)
-//            request.sortDescriptors = [sort]
-//            fetchedRC = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-//            do {
-//                try fetchedRC.performFetch()
-//            } catch let error as NSError {
-//                print("Couldn't fetch. \(error), \(error.userInfo)")
-//            }
-//        }
-
-    
     func refreshWith(watchedMoviesList: Bool) {
         let request = SavedMovies.fetchRequest() as NSFetchRequest<SavedMovies>
         request.predicate = NSPredicate(format: "status = %@", NSNumber(value: watchedMoviesList))

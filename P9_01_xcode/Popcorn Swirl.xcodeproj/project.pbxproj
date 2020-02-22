@@ -467,7 +467,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K8SYKS5XRJ;
-				IBSC_WARNINGS = NO;
+				IBC_WARNINGS = YES;
+				IBSC_NOTICES = YES;
+				IBSC_WARNINGS = YES;
 				INFOPLIST_FILE = "Popcorn Swirl/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -487,7 +489,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K8SYKS5XRJ;
-				IBSC_WARNINGS = NO;
+				IBC_WARNINGS = YES;
+				IBSC_NOTICES = YES;
+				IBSC_WARNINGS = YES;
 				INFOPLIST_FILE = "Popcorn Swirl/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

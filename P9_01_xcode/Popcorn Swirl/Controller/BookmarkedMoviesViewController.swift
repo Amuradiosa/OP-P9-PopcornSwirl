@@ -10,6 +10,7 @@ import UIKit
 
 class BookmarkedMoviesViewController: UIViewController, ModalHandler {
     
+    // to hold the selected indexpath of the item pressed in collection view
     private var selected: IndexPath?
 
     @IBOutlet weak var collectionView: UICollectionView!
@@ -51,14 +52,15 @@ class BookmarkedMoviesViewController: UIViewController, ModalHandler {
         }
     }
     
+    // MovieDetailViewController delegate function to refresh bookmarked movies to reflect any changes happened in MovieDetailView such as adding a movie or removing it.
     func modalDismissed() {
         CoreDataManager.shared.refreshWith(watchedMoviesList: false)
         self.collectionView.reloadData()
-
     }
     
 }
 
+// Collectionview Delegate and dataSource methods
 extension BookmarkedMoviesViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

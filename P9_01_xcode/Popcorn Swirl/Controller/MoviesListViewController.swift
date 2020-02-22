@@ -16,6 +16,7 @@ class MoviesListViewController: UIViewController {
     @IBOutlet weak var textBox: UITextField!
     @IBOutlet weak var dropDown: UIPickerView!
     
+    // to set the years the user can see movies released in that year, plus to always progrommaticly get the latest year in the drop down menu
     var releaseYears: [String] {
         var list = [String]()
         for i in 0...30 {
@@ -27,12 +28,15 @@ class MoviesListViewController: UIViewController {
         return list
     }
     
+    // to hold the selected indexpath of the item pressed in collection view
     private var selected: IndexPath?
     
+    // an array for holding the data
     var dataSource: [MovieBrief] {
         return DataManager.shared.movieList
     }
     
+    // Load data and populate collection view
     func loadData(term: String) {
         MovieService.getMovieList(term: term) { (success, list) in
             if success, let list = list {
@@ -47,6 +51,7 @@ class MoviesListViewController: UIViewController {
         }
     }
     
+    // alert in case there is no internet access or networking request isn't successful for somereason
     func presentNoDataAlert(title: String?, message: String?) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let dismissAction = UIAlertAction(title: "Got it", style: .cancel)
@@ -89,6 +94,7 @@ class MoviesListViewController: UIViewController {
     
 }
 
+// Collectionview Delegate and dataSource methods
 extension MoviesListViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

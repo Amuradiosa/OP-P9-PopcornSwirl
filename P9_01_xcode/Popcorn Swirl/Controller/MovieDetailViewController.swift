@@ -9,14 +9,18 @@
 import UIKit
 import GoogleMobileAds
 
+// protocol to handle refreshing presenting controller after modal screen dismissal
 protocol ModalHandler {
     func modalDismissed()
 }
 
 class MovieDetailViewController: UIViewController {
     
+    // variabel to recieve the movieid from presenting view controller
     var movieId: Int64!
+    // variabel to recieve the persisted note from presenting view controller if there's one
     var movieNote: String?
+    // to store the fetched movie from MovieService helper controller
     private var movie: Movie?
     var delegate: ModalHandler?
     // textview inside add note alert controller
@@ -96,7 +100,7 @@ class MovieDetailViewController: UIViewController {
         }
     }
     
-    // to update UI when opening the movie details from any root screen
+    // to update UI when opening the movie details from any root screen(to reflect movie status on UI wether movie is bookmarked as favourite or watched, and if there's a note attched to it.
     func updateUI() {
         if let alreadySavedMovie = CoreDataManager.shared.isThisMovieAlreadySaved(movieId: movieId) {
             alreadySavedMovie.status ? updateAddToWatchOutlet() : updateBookmarkOutlet()
@@ -111,8 +115,7 @@ class MovieDetailViewController: UIViewController {
         
         titleLabel.text = movie.title
         genreLabel.text = movie.genre
-        // FIXME: - get the first four charachters for the release year using NSAttributedString
-        releaseYearLabel.text = movie.releaseDate
+        releaseYearLabel.text = movie.releaseDate?.maxLength(length: 10)
         longDescriptionTextView.text = movie.longDescription
         
         if let imageUrl = URL(string: movie.artworkURL) {
@@ -127,6 +130,7 @@ class MovieDetailViewController: UIViewController {
         }
     }
     
+    // alert in case there is no internet access or networking request isn't successful for somereason
     func presentNoDataAlert(title: String?, message: String?) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let dismissAction = UIAlertAction(title: "Got it", style: .cancel)
@@ -224,6 +228,7 @@ class MovieDetailViewController: UIViewController {
 // MARK: - Add note functionality
 extension MovieDetailViewController: UITextViewDelegate {
     
+    // function to reflect latest changes regarding adding or editing notes on alert controller and add note button
     func doWeHaveNote() -> (String,String,String) {
         var titles = ("","","")
         if let alreadySavedMovie = CoreDataManager.shared.isThisMovieAlreadySaved(movieId: movieId),
@@ -239,7 +244,7 @@ extension MovieDetailViewController: UITextViewDelegate {
         return titles
     }
         
-    func addNoteAction() {
+    private func addNoteAction() {
         let (alertControllerTitle, alertControllerActionTitle, textViewText) = doWeHaveNote()
         let alert = UIAlertController(title: alertControllerTitle, message: "", preferredStyle: .alert)
         
@@ -274,8 +279,6 @@ extension MovieDetailViewController: UITextViewDelegate {
         textView.text               = textViewText
         textView.delegate           = self
         
-        
-        
         alert.view.addSubview(textView)
         alert.addAction(addNoteAction)
         alert.addAction(cancelAction)
@@ -301,11 +304,27 @@ extension MovieDetailViewController: UITextViewDelegate {
     }
     
     // function for trimming all white characters because there's a possibility that user just keeps typing spaces without meaningful text.
-    func fetchInput(textViewInput: UITextView) -> String? {
+    private func fetchInput(textViewInput: UITextView) -> String? {
         if let caption = textViewInput.text?.trimmingCharacters(in: .whitespaces) {
             return caption.count > 0 ? caption : nil
         }
         return nil
     }
     
+}
+
+// to limit the number of characters in releaseYear label so that only accommodate the release date
+extension String {
+   func maxLength(length: Int) -> String {
+       var str = self
+       let nsString = str as NSString
+       if nsString.length >= length {
+           str = nsString.substring(with:
+               NSRange(
+                location: 0,
+                length: nsString.length > length ? length : nsString.length)
+           )
+       }
+       return  str
+   }
 }

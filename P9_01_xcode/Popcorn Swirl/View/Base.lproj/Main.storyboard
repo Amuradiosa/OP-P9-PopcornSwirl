@@ -20,20 +20,20 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="RLy-r0-Ai7">
-                                    <size key="itemSize" width="173" height="201"/>
+                                    <size key="itemSize" width="65" height="69"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="f97-cN-IDu" customClass="ListCollectionViewCell" customModule="Popcorn_Swirl" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="173" height="201"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="65" height="69"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="wa1-sI-kHS">
-                                            <rect key="frame" x="0.0" y="0.0" width="173" height="201"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="65" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="173" height="201"/>
+                                        <size key="customSize" width="65" height="69"/>
                                         <connections>
                                             <segue destination="ovW-GT-PCi" kind="show" identifier="showMovieDetails" id="ZK0-i0-vy9"/>
                                         </connections>
@@ -51,7 +51,7 @@
                                 <rect key="frame" x="147" y="44" width="120" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="1lx-9P-eSG"/>
-                                    <constraint firstAttribute="width" constant="120" id="XbW-lf-ec9"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="XbW-lf-ec9"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -205,7 +205,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie title" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BkQ-TW-yh3">
                                 <rect key="frame" x="20" y="230" width="374" height="62"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="374" id="7k9-q9-qdX"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="374" id="7k9-q9-qdX"/>
                                     <constraint firstAttribute="height" constant="62" id="C2R-Ak-VyY"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
@@ -215,7 +215,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genre" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dte-Fu-Xbh">
                                 <rect key="frame" x="20" y="300" width="170" height="28"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="170" id="8mN-v9-UUf"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="170" id="8mN-v9-UUf"/>
                                     <constraint firstAttribute="height" constant="28" id="lFl-GT-SKp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
@@ -226,7 +226,7 @@
                                 <rect key="frame" x="132" y="604" width="150" height="44"/>
                                 <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="ADs-Oh-bPe"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="ADs-Oh-bPe"/>
                                     <constraint firstAttribute="height" constant="44" id="Kl8-QL-JoH"/>
                                 </constraints>
                                 <color key="tintColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -287,10 +287,10 @@
                                     <action selector="addNoteButtonTapped:" destination="ovW-GT-PCi" eventType="touchUpInside" id="VLr-UA-yNf"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="release year" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Si6-N7-bdP">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="release year" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Si6-N7-bdP">
                                 <rect key="frame" x="224" y="300" width="170" height="28"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="170" id="0fS-Jf-MuF"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="170" id="0fS-Jf-MuF"/>
                                     <constraint firstAttribute="height" constant="28" id="zxu-5q-NMa"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
@@ -324,11 +324,13 @@
                             <constraint firstItem="gOE-pE-lhw" firstAttribute="top" secondItem="NOQ-19-J9l" secondAttribute="bottom" constant="8" id="Str-b1-Wln"/>
                             <constraint firstItem="ikv-cj-UYj" firstAttribute="top" secondItem="gOE-pE-lhw" secondAttribute="bottom" constant="8" id="XQP-cc-M4q"/>
                             <constraint firstItem="NOQ-19-J9l" firstAttribute="leading" secondItem="zIl-TC-FSa" secondAttribute="leading" constant="20" id="YMc-uy-JYK"/>
+                            <constraint firstItem="zIl-TC-FSa" firstAttribute="trailing" secondItem="BkQ-TW-yh3" secondAttribute="trailing" constant="20" id="ef1-kX-a2K"/>
                             <constraint firstItem="Dte-Fu-Xbh" firstAttribute="top" secondItem="BkQ-TW-yh3" secondAttribute="bottom" constant="8" id="gZV-FY-Mf1"/>
                             <constraint firstItem="Dte-Fu-Xbh" firstAttribute="leading" secondItem="zIl-TC-FSa" secondAttribute="leading" constant="20" id="iHk-xc-rPR"/>
                             <constraint firstItem="csV-Pw-umQ" firstAttribute="leading" secondItem="zIl-TC-FSa" secondAttribute="leading" constant="107" id="jFo-Vh-4Xy"/>
                             <constraint firstItem="zIl-TC-FSa" firstAttribute="trailing" secondItem="gOE-pE-lhw" secondAttribute="trailing" constant="20" id="jaz-MO-q60"/>
                             <constraint firstItem="zIl-TC-FSa" firstAttribute="trailing" secondItem="ouN-2z-bZW" secondAttribute="trailing" constant="20" id="ktt-0G-jyM"/>
+                            <constraint firstItem="Si6-N7-bdP" firstAttribute="leading" secondItem="Dte-Fu-Xbh" secondAttribute="trailing" constant="34" id="nto-5K-7ym"/>
                             <constraint firstItem="Si6-N7-bdP" firstAttribute="top" secondItem="BkQ-TW-yh3" secondAttribute="bottom" constant="8" id="s5E-3w-1TI"/>
                             <constraint firstItem="gOE-pE-lhw" firstAttribute="leading" secondItem="zIl-TC-FSa" secondAttribute="leading" constant="20" id="vsk-6o-gs0"/>
                             <constraint firstItem="ouN-2z-bZW" firstAttribute="top" secondItem="Dte-Fu-Xbh" secondAttribute="bottom" constant="8" id="y3t-uE-ziA"/>
@@ -385,6 +387,6 @@
         <image name="film.fill" catalog="system" width="64" height="46"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Rbt-1q-sht"/>
+        <segue reference="ZK0-i0-vy9"/>
     </inferredMetricsTieBreakers>
 </document>

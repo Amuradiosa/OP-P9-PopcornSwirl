@@ -10,6 +10,7 @@ import UIKit
 
 class WatchedMoviesViewController: UIViewController, ModalHandler {
     
+    // to hold the selected indexpath of the item pressed in collection view
     private var selected: IndexPath?
 
     @IBOutlet weak var collectionView: UICollectionView!

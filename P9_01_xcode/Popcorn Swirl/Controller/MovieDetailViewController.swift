@@ -313,7 +313,7 @@ extension MovieDetailViewController: UITextViewDelegate {
     
 }
 
-// to limit the number of characters in releaseYear label so that only accommodate the release date
+// to limit the number of characters in releaseYear label so that only it accommodates the release date without the other characters
 extension String {
    func maxLength(length: Int) -> String {
        var str = self

@@ -1,6 +1,6 @@
 #  OpenClassrooms - iOS developer path - iOS Project 9
 ## PopCornSwirl - Portrait (iPhones and iPads)
-## Core Data - JSONSerialization - GoogleMobileAds
+## Core Data - Networking - GoogleMobileAds
 
 This application uses ["iTunes as Movies data base"](https://itunes.apple.com/) <br/>
 

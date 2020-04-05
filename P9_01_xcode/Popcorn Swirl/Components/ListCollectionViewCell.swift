@@ -28,8 +28,6 @@ class ListCollectionViewCell: UICollectionViewCell {
         artWorkImageView.image = image
     }
     
-    
-
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

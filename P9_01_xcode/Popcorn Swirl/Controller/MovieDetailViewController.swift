@@ -147,7 +147,7 @@ class MovieDetailViewController: UIViewController {
         }
     }
     
-    // status = false means movie is bookmarked, status == true means movie is add to watched list
+    // status == false means movie is bookmarked, status == true means movie is added to watched list
     func createOrUpdateMovie(status: Bool, note: String?) {
         if let alreadySavedMovie = CoreDataManager.shared.isThisMovieAlreadySaved(movieId: movieId) {
             // update movie
@@ -313,7 +313,7 @@ extension MovieDetailViewController: UITextViewDelegate {
     
 }
 
-// to limit the number of characters in releaseYear label so that only it accommodates the release date without the other characters
+// to limit the number of characters in releaseYear label so that it only accommodates for the release date without the other characters
 extension String {
    func maxLength(length: Int) -> String {
        var str = self

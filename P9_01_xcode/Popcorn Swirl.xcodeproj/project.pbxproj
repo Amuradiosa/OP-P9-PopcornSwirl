@@ -52,6 +52,7 @@
 		151CE9DE23EF1C6F00D7E23C /* SavedMovies+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SavedMovies+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		151CE9E123EF359E00D7E23C /* ListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewCell.swift; sourceTree = "<group>"; };
 		151CE9E223EF359E00D7E23C /* ListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListCollectionViewCell.xib; sourceTree = "<group>"; };
+		1539FE412439D98700F017C2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		15A8096623E7201C00F7B19D /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		E9B7546EB6040FEA78AA088A /* Pods-Popcorn Swirl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Popcorn Swirl.release.xcconfig"; path = "Target Support Files/Pods-Popcorn Swirl/Pods-Popcorn Swirl.release.xcconfig"; sourceTree = "<group>"; };
 		ED7A0DA0354C43C2A01199DE /* Pods_Popcorn_Swirl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Popcorn_Swirl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +82,7 @@
 		150BB5FA23DB34220036535E = {
 			isa = PBXGroup;
 			children = (
+				1539FE412439D98700F017C2 /* README.md */,
 				150BB60523DB34220036535E /* Popcorn Swirl */,
 				150BB60423DB34220036535E /* Products */,
 				2ABB63F93319E193C331A354 /* Pods */,

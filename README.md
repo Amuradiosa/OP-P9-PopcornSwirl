@@ -27,7 +27,7 @@ The user first sees the latest movies in the current year.<br/>
 <img src="P9_01_xcode/images/4.png" width="300">
 </p><br/>
 
-Then the user can selects a particular year from the dropdown menu on the top to see movies that were released in that year.<br/>
+Then the user can select a particular year from the dropdown menu on the top to see movies that were released in that year.<br/>
 
 <p align="center">
 <img src="P9_01_xcode/images/5.png" width="300">

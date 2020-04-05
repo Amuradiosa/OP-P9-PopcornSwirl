@@ -247,7 +247,7 @@ extension MovieDetailViewController: UITextViewDelegate {
     private func addNoteAction() {
         let (alertControllerTitle, alertControllerActionTitle, textViewText) = doWeHaveNote()
         let alert = UIAlertController(title: alertControllerTitle, message: "", preferredStyle: .alert)
-        
+                
         // increse the height of alert controller to accommodate UITextView
         let height:NSLayoutConstraint = NSLayoutConstraint(item: alert.view!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 200)
         alert.view.addConstraint(height)
@@ -301,6 +301,9 @@ extension MovieDetailViewController: UITextViewDelegate {
             textView.text = ""
             textView.textColor = UIColor.black
         }
+        UIView.animate(withDuration: 0.5, animations: {
+            textView.superview?.frame.origin.y = UIScreen.main.bounds.height/2 - 140
+        })
     }
     
     // function for trimming all white characters because there's a possibility that user just keeps typing spaces without meaningful text.

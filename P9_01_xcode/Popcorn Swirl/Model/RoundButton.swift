@@ -9,17 +9,17 @@
 import UIKit
 
 struct RoundButton {
-    
-    private var button: UIButton?
-    
-    mutating func setButton(_ button: UIButton) {
-        self.button = button
+  
+  private var button: UIButton?
+  
+  mutating func setButton(_ button: UIButton) {
+    self.button = button
+  }
+  
+  func roundButton() {
+    if let newButton = button {
+      newButton.layer.cornerRadius = 15
+      newButton.layer.masksToBounds = true
     }
-    
-    func roundButton() {
-        if let newButton = button {
-            newButton.layer.cornerRadius = 15
-            newButton.layer.masksToBounds = true
-        }
-    }
+  }
 }
